@@ -110,7 +110,7 @@ class QapImgConstEnv(gym.Env):
             diag[min_ind] = 90
         matrix_dp = np.dot(np.dot(matrix_mff,self.matrix_dist),np.transpose(matrix_mff))
         matrix_wd = matrix_dp*self.matrix_fq
-        mff_sum = np.sum(matrix_wd)
+        mff_sum = np.sum(matrix_wd/2550)
         return mff_sum
 
     def get_location_matrix(self,path,num_prod):
