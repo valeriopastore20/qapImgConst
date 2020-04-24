@@ -63,6 +63,7 @@ class QapImgConstEnv(gym.Env):
         self.matrix_wd = matrix_dp*self.matrix_fq
         self.current_sum = np.sum(self.matrix_wd)
         self.count = 0
+        self.done = False
         return np.reshape(self.matrix_wd,(self.num_prod,self.num_prod,1))
 
     # metodo per effettuare il rendere dell'environment
@@ -78,8 +79,6 @@ class QapImgConstEnv(gym.Env):
         print("R E N D E R")
 
     def step(self,actionKey):
-        self.done = False #e' qui perche' la callback viene chiamata dopo il reset, quindi nn saremmo in grado di
-                        # vedere i risultati dopo l'ultima azione
         #converte il valore dell'action nella corrispondente azione
         self.action = self.dict[actionKey]
         # effettua lo swap sulla matrice di prodotto e ricalcola la matrice finale
